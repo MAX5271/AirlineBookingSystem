@@ -1,20 +1,21 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
+const { PORT } = require("./config/serverConfig");
+const CityRepository = require("./repository/cityRepository");
 
-const { PORT } = require('./config/serverConfig');// dotenv package used and imported here
-const CityRepository = require('./repository/city-repository');
 
-const setupAndStartServer = async () =>{
-    //create an express object
-    const app = express();
+async function startServer() {
+  const app = express();
 
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  const repo = new CityRepository();
+  app.get("/",async (req, res) => {
+    res.send("<h1>Hello World<h1/>");
+  });
+  app.listen(PORT,async () => {
+    console.log(`The server has been started on the port ${PORT}`);
+  });
+}
 
-    app.listen(PORT,()=>{
-        console.log(`Server started at ${PORT}`);
-    });
-
-};
-
-setupAndStartServer();
+startServer();
