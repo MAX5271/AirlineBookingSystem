@@ -13,7 +13,6 @@ async function startServer() {
 
   app.use('/api',ApiRoutes);
 
-  const repo = new CityRepository();
   app.get("/",async (req, res) => {
     res.send("<h1>Hello World<h1/>");
   });
