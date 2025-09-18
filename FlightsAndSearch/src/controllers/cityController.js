@@ -72,7 +72,7 @@ const get = async (req,res) => {
 //patch: /city/:id -> req.body
 const update = async (req,res) => {
     try {
-        const city = await cityService.updateCity({name:req.body,cityId:req.params.id});
+        const city = await cityService.updateCity({name:req.body,cityId:req.params.id });
         return res.status(200).json({
             data: city,
             success: true,

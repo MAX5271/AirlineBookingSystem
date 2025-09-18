@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { PORT } = require("./config/serverConfig");
 const CityRepository = require("./repository/cityRepository");
+const ApiRoutes = require('./Routes/index');
 
 
 async function startServer() {
@@ -9,6 +10,9 @@ async function startServer() {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.use('/api',ApiRoutes);
+
   const repo = new CityRepository();
   app.get("/",async (req, res) => {
     res.send("<h1>Hello World<h1/>");
