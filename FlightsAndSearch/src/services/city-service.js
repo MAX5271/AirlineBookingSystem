@@ -2,7 +2,7 @@ const {CityRepository} =require('../repository/index');
 
 class CityService{
     constructor(){
-        this.cityRepository = new CityRepository();
+        this.cityRepository = new CityRepository();// here cityRepository is a variable and we have attached it to `this` which enables us to use it anywhere in the class which won't happen if we just make a random variable.
     }
     async createCity({ name }) {
         try {
@@ -38,3 +38,5 @@ class CityService{
         }
       }
 };
+
+module.exports=CityService;
