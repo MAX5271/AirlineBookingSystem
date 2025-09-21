@@ -24,6 +24,14 @@ class AirportService {
       console.log(error);
     }
   }
+  async getAllAirports() {
+    try {
+      const airport = await this.airportRepository.getAllAirports();
+      return airport;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async updateAirport(data, cityId) {
     try {
       const airport = await this.airportRepository.updateAirport(data, cityId);

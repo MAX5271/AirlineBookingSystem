@@ -45,10 +45,9 @@ const destroy = async (req,res) => {
 
 const get = async (req,res) => {
     try {
-        console.log(req.params);
-        const city = await airportService.getAirport(req.params.id);
+        const airport = await airportService.getAirport(req.params.id);
         res.status(200).json({
-            data: city,
+            data: airport,
             success: true,
             message:'Ariport fetched successfully.',
             error:{}
@@ -59,6 +58,26 @@ const get = async (req,res) => {
             data: {},
             success: false,
             message: 'Not able to fetch the airport',
+            err: error
+        });
+    }
+};
+
+const getAll = async (req,res) => {
+    try {
+        const airport = await airportService.getAllAirports();
+        res.status(200).json({
+            data: airport,
+            success: true,
+            message:'Ariports fetched successfully.',
+            error:{}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to fetch the airports',
             err: error
         });
     }
@@ -88,5 +107,6 @@ module.exports = {
     create,
     update,
     get,
+    getAll,
     destroy
 };

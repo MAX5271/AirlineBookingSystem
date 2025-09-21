@@ -24,6 +24,15 @@ class AirportRepository {
     }
   }
 
+  async getAllAirports(){
+    try {
+        const airport = await Airport.findAll();
+        return airport;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async updateAirport(data,cityId) {
     try {
         const airport = await Airport.findByPk(cityId);
