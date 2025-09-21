@@ -4,7 +4,6 @@ const airportService = new AirportService();
 
 const create = async (req,res) => {
     try {
-        // console.log(req.body);
         const airport = await airportService.createAirport(req.body.name,req.body.address,req.body.cityId);
         res.status(201).json({
             data: airport,
@@ -65,7 +64,7 @@ const get = async (req,res) => {
 
 const getAll = async (req,res) => {
     try {
-        const airport = await airportService.getAllAirports();
+        const airport = await airportService.getAllAirports(req.query);
         res.status(200).json({
             data: airport,
             success: true,

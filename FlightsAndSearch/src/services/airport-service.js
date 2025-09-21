@@ -24,9 +24,9 @@ class AirportService {
       console.log(error);
     }
   }
-  async getAllAirports() {
+  async getAllAirports(filter) {
     try {
-      const airport = await this.airportRepository.getAllAirports();
+      const airport = await this.airportRepository.getAllAirports(filter.name);
       return airport;
     } catch (error) {
       console.log(error);
@@ -42,8 +42,8 @@ class AirportService {
   }
   async deleteAirport(cityId) {
     try {
-      const response = await this.airportRepository.deleteAirport(cityId);
-      return response;
+      const airport = await this.airportRepository.deleteAirport(cityId);
+      return airport;
     } catch (error) {
       console.log(error);
     }
