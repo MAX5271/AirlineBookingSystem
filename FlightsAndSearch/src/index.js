@@ -4,6 +4,7 @@ const { PORT } = require("./config/serverConfig");
 const CityRepository = require("./repository/cityRepository");
 const ApiRoutes = require('./Routes/index');
 
+const db= require('./models/index');
 
 async function startServer() {
   const app = express();
@@ -18,6 +19,11 @@ async function startServer() {
   });
   app.listen(PORT,async () => {
     console.log(`The server has been started on the port ${PORT}`);
+
+    if(process.env.SYNC_DB){
+      db.sequelize.sync({alter:true});
+    }
+    
   });
 }
 
