@@ -1,12 +1,16 @@
 const { Airport } = require("../models/index");
 const { Op, where } = require("sequelize");
 class AirportRepository {
-  async createAirport(name, address, cityId) {
+  async createAirport(data) {
     try {
+      if(data.details){
+        const airport = await Airport.bulkCreate(data.details);
+        return airport;
+      }
       const airport = await Airport.create({
-        name: name,
-        address: address,
-        cityId: cityId,
+        name: data.name,
+        address: data.address,
+        cityId: data.cityId,
       });
       return airport;
     } catch (error) {
@@ -25,13 +29,20 @@ class AirportRepository {
 
   async getAllAirports(filter) {
     try {
-      if (filter) {
+      if (filter.name) {
         const airport = await Airport.findAll({
           where: {
             name: {
-              [Op.startsWith]: filter,
+              [Op.startsWith]: filter.name,
             },
           },
+        });
+        return airport;
+      }else if(filter.id){
+        const airport = await Airport.findAll({
+          where:{
+            cityId:filter.id
+          }
         });
         return airport;
       }

@@ -26,7 +26,7 @@ class AirportService {
   }
   async getAllAirports(filter) {
     try {
-      const airport = await this.airportRepository.getAllAirports(filter.name);
+      const airport = await this.airportRepository.getAllAirports(filter);
       return airport;
     } catch (error) {
       console.log(error);
