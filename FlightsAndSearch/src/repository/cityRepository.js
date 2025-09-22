@@ -4,6 +4,10 @@ const { City } = require("../models/index");
 class CityRepository {
   async createCity(name) {
     try {
+      if(name.names){
+        const city=City.bulkCreate(name.names);
+        return city;
+      }
       const city = City.create(name);
       return city;
     } catch (error) {
