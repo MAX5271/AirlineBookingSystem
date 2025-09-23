@@ -13,32 +13,32 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert('Airports',[
-      {
-        name:'Indira Gandhi International Airport',
-        cityId:4,
-        createdAt: new Date(),
-        updatedAt: new Date() 
-      },
-      {
-        name:'Safdarjung Airport',
-        cityId:4,
-        createdAt: new Date(),
-        updatedAt: new Date() 
-      },
-      {
-        name:'Chhatrapati Shivaji Maharaj International Airport Mumbai',
-        cityId:5,
-        createdAt: new Date(),
-        updatedAt: new Date() 
-      },
-      {
-        name:'Juhu Airport',
-        cityId:4,
-        createdAt: new Date(),
-        updatedAt: new Date() 
-      },
-    ],{});
+    // await queryInterface.bulkInsert('Airports',[
+    //   {
+    //     name:'Indira Gandhi International Airport',
+    //     cityId:4,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date() 
+    //   },
+    //   {
+    //     name:'Safdarjung Airport',
+    //     cityId:4,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date() 
+    //   },
+    //   {
+    //     name:'Chhatrapati Shivaji Maharaj International Airport Mumbai',
+    //     cityId:5,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date() 
+    //   },
+    //   {
+    //     name:'Juhu Airport',
+    //     cityId:4,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date() 
+    //   },
+    // ],{});
 
   },
 
