@@ -16,12 +16,33 @@ const create = async (req,res)=>{
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to create a city',
+            message: 'Not able to create a flight',
             err: error
         });
     }
 };
 
+const getAll = async (req,res)=>{
+    try {
+        const response = await flightService.getAllFlightData(req.query);
+        return res.status(201).json({
+            data:response,
+            success:true,
+            message: 'Flights fetched successfully.',
+            err: {}
+        });
+    } catch (error) {
+        onsole.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to fetch the flights.',
+            err: error
+        });
+    }
+}
+
 module.exports={
-    create
+    create,
+    getAll
 }
