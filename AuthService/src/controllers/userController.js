@@ -43,9 +43,30 @@ const destroy = async (req,res)=>{
             err:error
         });
     }
-}
+};
+
+const getUser = async (req,res)=>{
+    try {
+        const response = await userService.getUser(req.params.id);
+        return res.status(200).json({
+            data: response,
+            success:true,
+            message:"Successfully fetched a user.",
+            err:{}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:"Something went wrong in controller layer",
+            err:error
+        });
+    }
+};
 
 module.exports={
     create,
-    destroy
+    destroy,
+    getUser
 }
