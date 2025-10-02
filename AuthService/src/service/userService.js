@@ -54,6 +54,22 @@ class UserService {
       throw { error };
     }
   }
+  
+  async isAuthenticated(token){
+    try {
+      const response = this.verifyToken(token);
+      if(!response){
+        throw{err:"Token not verified."};
+      }
+      const user=this.userRepository.getById(response.id);
+      if(!user){
+        throw{err:"No user found."};
+      }
+      return user.id;
+    } catch (error) {
+      throw {error}
+    }
+  }
 
   createToken(user) {
     try {
@@ -81,6 +97,7 @@ class UserService {
       console.log(error);
     }
   }
+
 }
 
 module.exports = UserService;
