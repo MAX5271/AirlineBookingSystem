@@ -3,6 +3,7 @@ const { PORT } = require('./config/serverConfig');
 const bodyParser = require('body-parser');
 const apiRoutes = require('./routes/index');
 const db = require('./models/index');
+const {User,Role} = require('./models/index');
 const app = express();
 
 const startServer =async ()=>{
