@@ -8,8 +8,21 @@ const  validateUserAuth = (req,res,next)=>{
         });
     }
     next();
-}
+};
+
+const validateIsAdmin = (req,res,next)=>{
+    if(!req.body.id){
+        return res.status(400).json({
+            success:false,
+            data:{},
+            message:"Something went wrong.",
+            err:"user id missing in the request."
+        });
+    }
+    next()
+};
 
 module.exports={
     validateUserAuth,
+    validateIsAdmin
 }

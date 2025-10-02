@@ -2,6 +2,7 @@ const { JWT_KEY } = require("../config/serverConfig");
 const UserRepository = require("../repository/userRepository");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const user = require("../models/user");
 
 class UserService {
   constructor() {
@@ -61,7 +62,7 @@ class UserService {
       if(!response){
         throw{err:"Token not verified."};
       }
-      const user=this.userRepository.getById(response.id);
+      const user = await this.userRepository.getById(response.id);
       if(!user){
         throw{err:"No user found."};
       }
@@ -93,6 +94,14 @@ class UserService {
   checkPassword(userInputPassword, encryptedPassword) {
     try {
       return bcrypt.compareSync(userInputPassword, encryptedPassword);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async isAdmin(userId){
+    try {
+      return this.userRepository.isAdmin(userId);
     } catch (error) {
       console.log(error);
     }

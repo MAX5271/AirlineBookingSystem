@@ -1,3 +1,3 @@
 module.exports={
-    AuthRequestValidatorMiddlewares: require('./auth-request-validators')
+    AuthRequestValidatorMiddlewares: require('./auth-request-validators'),
 }
