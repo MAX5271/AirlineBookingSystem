@@ -5,3 +5,7 @@
 /AuthService/node_modules
 /AuthService/.env
 /AuthService/src/config/config.json
+
+/BookingService/node_modules
+/BookingService/.env
+/BookingService/src/config/config.json
