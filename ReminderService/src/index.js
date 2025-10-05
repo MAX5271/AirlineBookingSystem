@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const { PORT } = require("./config/serverConfig");
 
 const apiRoutes = require('./routes/index');
+const { sendBasicEmail } = require('./service/emailService');
+
 
 const startServer = async () => {
   const app = express();
@@ -15,3 +17,5 @@ const startServer = async () => {
     console.log(`Server has started on the port ${PORT}`);
   });
 };
+
+startServer();
