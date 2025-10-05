@@ -9,3 +9,7 @@
 /BookingService/node_modules
 /BookingService/.env
 /BookingService/src/config/config.json
+
+/ReminderService/node_modules
+/ReminderService/.env
+/ReminderService/src/config/config.json
